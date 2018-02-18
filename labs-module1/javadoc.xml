@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="private" author="true" classpath="C:\Users\Boussaid\Documents\NetBeansProjects\mysql-connector-java-5.1.24-bin.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="siasoft.module1,com.sia.java,siasoft.util" source="1.8" sourcepath="C:\Users\Boussaid\eclipse-workspace\labs-module2\src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>
