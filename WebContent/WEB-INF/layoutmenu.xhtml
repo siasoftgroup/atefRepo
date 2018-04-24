@@ -1,0 +1,35 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pv="http://primefaces.org/volt">
+
+    <h:form id="menuform">
+        <pv:menu>
+            <p:submenu id="rm_dashboards" label="Dashboards" icon="icon-leaf">
+                <p:menuitem id="rm_db_landing" value="Your Promotion Page" icon="icon-leaf" />
+                <p:menuitem id="rm_db_v1" value="Dashboard V1" icon="icon-leaf" />
+                <p:menuitem id="rm_db_v2" value="Dashboard V2" icon="icon-leaf" />
+            </p:submenu>
+            <p:submenu id="rm_menupos" label="Menu Position" icon="icon-select">
+                <p:menuitem id="rm_left" url="#" value="Inline Menu" icon="icon-uniE675" onclick="$('body').removeClass('PopupMenu');return false;"/>
+                <p:menuitem id="rm_popup" url="#" value="Popup Menu" icon="icon-windows" onclick="$('body').addClass('PopupMenu');return false;"/>
+            </p:submenu>
+            <p:submenu id="rm_colors" label="Body Colors" icon="icon-lab">
+                <p:menuitem id="rm_bg_blue" url="#" value="Blue" icon="icon-syringe" onclick="$('body').removeClass().addClass('BlueBody');return false;"/>
+                <p:menuitem id="rm_bg_leaden" url="#" value="Leaden" icon="icon-syringe" onclick="$('body').removeClass().addClass('LeadenBody');return false;"/>
+                <p:menuitem id="rm_bg_red" url="#" value="Red" icon="icon-syringe" onclick="$('body').removeClass().addClass('RedBody');return false;"/>
+                <p:menuitem id="rm_bg_green" url="#" value="Green" icon="icon-syringe" onclick="$('body').removeClass().addClass('GreenBody');return false;"/>
+                <p:menuitem id="rm_bg_cf" url="#" value="CornFlower" icon="icon-syringe" onclick="$('body').removeClass().addClass('CornFlowerBody');return false;"/>
+                <p:menuitem id="rm_bg_gray" url="#" value="Gray" icon="icon-syringe" onclick="$('body').removeClass().addClass('DarkGrayBody');return false;"/>
+            </p:submenu>
+           
+            
+           
+
+                   </pv:menu>
+    </h:form>
+
+</ui:composition>

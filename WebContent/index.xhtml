@@ -1,0 +1,41 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+     <h:head>
+
+     </h:head>
+
+     <h:body>
+
+        <p:dataTable var="agent" value="#{agents.tousAgent}">
+    <f:facet name="header">
+        List of Agents
+    </f:facet>
+ 
+    <p:column headerText="Id">
+        <h:outputText value="#{agent.id}" />
+    </p:column>
+ 
+    <p:column headerText="Nom">
+        <h:outputText value="#{agent.nom}" />
+    </p:column>
+ 
+    <p:column headerText="Prénom">
+        <h:outputText value="#{agent.prenom}" />
+    </p:column>
+ 
+    <p:column headerText="email">
+        <h:outputText value="#{agent.email}" />
+    </p:column>
+ 
+    <f:facet name="footer">
+       
+    </f:facet>
+</p:dataTable>
+
+     </h:body>
+</html>

@@ -1,0 +1,159 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="subheader">
+        DataTable
+    </ui:define>
+    
+    <ui:define name="head">
+        <style type="text/css">
+            .actions .ui-panelgrid .ui-panelgrid-cell {
+                padding: 0px 10px;
+            }
+        </style>
+    </ui:define>
+     <ui:define name="subheader">
+        Menus
+    </ui:define>
+
+    
+     
+    
+    <ui:define name="content">
+     <div class="Container100">
+            <div class="Card ui-fluid">
+                <div class="CardTopic">Plain Menu - Toggleable - Overlay - MenuButton</div>
+                <div class="SeparatorFull"></div>
+                <div class="Container33 Responsive50">
+                    <h2 class="BigTopic">Plain Menu</h2>
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="Ajax">
+                                <p:menuitem value="Save"  />
+                                <p:menuitem value="Update" />
+                            </p:submenu>
+                            <p:submenu label="Non-Ajax">
+                                <p:menuitem value="Delete" />
+                            </p:submenu>
+                            <p:submenu label="Navigations">
+                                <p:menuitem value="External" url="http://www.primefaces.org" />
+                                <p:menuitem value="Internal"/>
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>
+                </div>
+                </div>
+                </div>
+        <p:commandButton value="Ajout" id="ajax"  styleClass="ui-priority-primary" onclick="PF('addEvent').show();"/> 
+        <div class="Container100">
+                <div class="Card">
+                    <div class="CardTopic TexAlCenter">DataTable</div>
+                    <div class="SeparatorFull"></div>
+                    <div class="Container100">
+                        <h:form id="form">
+                            <p:dataTable id="singleDT" var="agent" value="#{agents.tousAgent}" selectionMode="single" selection="#{agents.selectedAgent}" rowKey="#{agent.id}"
+                                         rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15" emptyMessage="No cars found with given criteria" reflow="true">
+                                <f:facet name="header">
+                                    Car Sales Ranks
+                                </f:facet>
+
+                                
+
+                                <p:column headerText="Id" sortBy="#{agent.id}" footerText="Id">
+                                    <h:outputText value="#{agent.id}" />
+                                </p:column>
+                                <p:column headerText="Prénom" sortBy="#{agent.prenom}" footerText="Prénom">
+                                    <h:outputText value="#{agent.prenom}" />
+                                </p:column>
+                                <p:column headerText="Nom" sortBy="#{agent.nom}" footerText="Nom">
+                                    <h:outputText value="#{agent.nom}" />
+                                </p:column>
+                                <p:column headerText="Email" sortBy="#{agent.email}" footerText="Email">
+                                    <h:outputText value="#{agent.email}" />
+                                </p:column>
+                                <p:column headerText="Action" footerText="Action" styleClass="ui-fluid actions">
+                                    <div class="Container50 Responsive100">
+                                        <p:commandButton process="singleDT"  update="ubdateUser:ubdateUser_panel" icon="ui-icon-edit"
+							oncomplete="PF('updateUser').show()" > 
+
+							<f:setPropertyActionListener value="#{agent}"
+									target="#{agents.selectedAgent}" />
+								
+
+							</p:commandButton>
+							
+                                    </div>
+                                    <div class="Container50 Responsive100">
+                                        <p:commandButton icon="fa fa-trash" process="singleDT"  ajax="true" styleClass="OrangeButton" actionListener="#{agents.deleteAgent(agent)}" style="margin-bottom:2px;"/>
+                                    </div>
+                                </p:column>
+                            </p:dataTable>
+                            
+					<p:dialog header="Ajouter Utilisateur" widgetVar="addEvent" >
+						 	<h:form id="formNouveauEvent">	
+						 	<h:panelGrid columns="1">
+						 	<p:inputText id="prenom" label="Prenom"  value="#{agents.prenom}" required="true" size="75" placeholder="Prénom" />
+						 	<p:inputText id="nom" label="Nom"  value="#{agents.nom}" required="true" size="75" placeholder="Nom" />	
+						 	<p:inputText id="email" label="Email"  value="#{agents.email}" required="true" size="75" placeholder="votre email" />	
+				
+						 	<p:inputText id="mpasse" label="Mpasse"  value="#{agents.password}" required="true" size="75" placeholder="votre mot de passe" />	
+						 	
+						 	<p:inputText id="adresse" label="adresse"  value="#{agents.adress}" required="true" size="75" placeholder="votre adresse" />	
+						 	<p:inputText id="ville" label="ville"  value="#{agents.ville}" required="true" size="75" placeholder="votre ville" />
+						 	<p:inputText id="tel" label="tel"  value="#{agents.tel}" required="true" size="75" placeholder="votre téléphone" />	
+						 	<p:inputText id="info" label="info"  value="#{agents.info}" required="true" size="75" placeholder="votre info" />		
+						 	<p:commandButton value="Ajouter" id="ajax"  styleClass="ui-priority-primary" actionListener="#{agents.AjoutAgent}" ></p:commandButton>
+						 	
+						 	</h:panelGrid>
+						 	
+						 	
+						 	
+						 	</h:form>
+						 
+						</p:dialog>
+                            
+                         
+                        </h:form>
+                         <h:form id="ubdateUser">
+						<p:dialog header="Modifier Evenment" widgetVar="updateUser" >
+						 		
+ 	<h:panelGrid columns="1" id="ubdateUser_panel">
+ 	<p:inputText id="prenom" label="Prenom"  value="#{agents.selectedAgent.prenom}" required="true" size="75" 
+ 	placeholder="prenom" />	
+ 	
+ 	
+ 	<p:inputText id="nom" label="Nom"  value="#{agents.selectedAgent.nom}" required="true" size="75" 
+ 	placeholder="nom" />
+ 	<p:inputText id="password" label="password"  value="#{agents.selectedAgent.password}" required="true" size="75" 
+ 	placeholder="password" />	
+ 	<p:inputText id="email" label="email"  value="#{agents.selectedAgent.email}" required="true" size="75" 
+ 	placeholder="email" />	
+ 	 <p:inputText id="mpasse" label="mpasse"  value="#{agents.selectedAgent.agentdetail.adress}" required="true" size="75" 
+ 	placeholder="adresse" />
+ 	<p:inputText id="ville" label="ville"  value="#{agents.selectedAgent.agentdetail.ville}" required="true" size="75" 
+ 	placeholder="ville" />	
+ 	<p:inputText id="tel" label="tel"  value="#{agents.selectedAgent.agentdetail.tel}" required="true" size="75" 
+ 	placeholder="tel" />	
+ 	<p:inputText id="info" label="info"  value="#{agents.selectedAgent.agentdetail.info}" required="true" size="75" 
+ 	placeholder="info" />
+ 	 
+ 	<p:commandButton  value="Terminer" id="ajax"  styleClass="ui-priority-primary" actionListener="#{agents.updateAgent()}" >
+ 	</p:commandButton>
+ 	
+ 	</h:panelGrid>
+				
+						</p:dialog>
+</h:form>  
+                        
+                    </div>
+                </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Siasoft</title>
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body styleClass="BlueBody">
+        
+        <div class="Container100">
+            <div class="Container100">
+                <div class="Wid50 OvHidden DispBlock MarAuto WidAutoOnMobile" style="margin-top:7%;">
+                    <div class="Card ShadowEffect">
+                        <div class="Container100">
+                            <div class="Card OrangeBack White TexAlCenter Fs20 FontVoltBold">Se connecter</div>
+                        </div>
+                        
+                        <div class="Container20 TexAlCenter Responsive100">
+                            <h:graphicImage name="demo/images/jaguar.png" styleClass="Wid80" library="volt-layout" style="max-width:200px;"/>
+                            <div class="EmptyBox10">
+                            
+                            </div>
+                           
+                        </div>
+                        <h:form>
+                        <p:growl id="growlog"></p:growl>
+                        <div class="Container40 Responsive100">
+                            <div class="Card TexAlCenter">
+                                <i class="icon-unlocked2 Fs60 TealGreen"></i>
+                                <div class="EmptyBox10"></div>
+                                <p:inputText styleClass="Wid90" placeholder="E-Mail" value="#{userLoginView.agent.email}"/>
+                                <div class="EmptyBox10"></div>
+                                <p:password styleClass="Wid90" placeholder="Mot de passe" value="#{userLoginView.agent.password}"/>
+                                <div class="Separator"></div>
+                                <p:commandButton value="Se connecter" icon="fa fa-unlock" styleClass="GreenButton" action="#{userLoginView.login()}" update="growlog"/>
+                                <div class="SeparatorFull"></div>
+                                <span class="Fs14"> Vous avez oublié votre mot de passe ? - <p:link value="Cliquer Ici !"/></span>
+                            </div>
+                        </div>
+                        </h:form>
+                        
+                        <div class="Container40 Responsive100">
+                            <div class="Card TexAlCenter">
+                                <i class="icon-user-add-outline Fs60 Blue"></i>
+                                <div class="EmptyBox10"></div>
+                                <h:form id="formNouveauEvent">	
+						 	<h:panelGrid columns="1">
+                                <p:inputText styleClass="Wid90" id="nom" label="nom" placeholder="Nom" value="#{agents.nom}"/>
+                                <div class="EmptyBox10"></div>
+                                <p:inputText styleClass="Wid90" id="prenom" label="Prenom" placeholder="Prénom" value="#{agents.prenom}"/>
+                                <div class="EmptyBox10"></div>
+                                <p:inputText styleClass="Wid90" id="email" label="email" placeholder="E-Mail" value="#{agents.email}"/>
+                                <div class="EmptyBox10"></div>
+                                <p:password styleClass="Wid90" id="password" label="Password" placeholder="Password" value="#{agents.password}"/>
+                               <p:inputText styleClass="Wid90" id="adresse" label="adresse" placeholder="Adresse" value="#{agents.adress}"/>
+                                <div class="EmptyBox10"></div>
+                                 <p:inputText styleClass="Wid90" id="info" label="info" placeholder="Info" value="#{agents.info}"/>
+                                <div class="EmptyBox10"></div>
+                                <p:inputText styleClass="Wid90" id="tel" label="tel" placeholder="Téléphone" value="#{agents.tel}"/>
+                                <div class="EmptyBox10"></div>
+                                <p:inputText styleClass="Wid90" id="ville" label="ville" placeholder="Ville" value="#{agents.ville}"/>
+                                <div class="EmptyBox10"></div>
+                                <div class="Separator"></div>
+                                <p:commandButton value="S'inscrire" icon="fa fa-check-circle-o" styleClass="RedButton" actionListener="#{agents.AjoutAgent}" ></p:commandButton>
+                                </h:panelGrid>
+						 	
+						 	
+						 	
+						 	</h:form>
+						 	
+						 	
+						 	
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h:outputStylesheet name="css/core-layout.css" library="volt-layout" />
+        <h:outputStylesheet name="css/animate.css" library="volt-layout" />
+        <h:outputStylesheet name="css/volt-font.css" library="volt-layout" />
+        <h:outputStylesheet name="css/font-awesome.css" library="volt-layout" />
+        <h:outputStylesheet name="css/volt-layout.css" library="volt-layout" />
+    </h:body>
+
+</html>
