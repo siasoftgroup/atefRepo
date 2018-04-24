@@ -70,7 +70,7 @@ public class AgentView {
 		public void deleteAgent( Agent agent) throws IOException{
 			
 				System.out.println("start deletsed");
-				System.out.println(agent.getAgentdetail().getId());
+				
 				
 				agentdao.delete(agent);
 				agentDetailDao.delete(agent.getAgentdetail());
